@@ -88,7 +88,7 @@ gallery.addEventListener('click', (event) => {
    event.preventDefault();
  
 const clickedOnImg = event.target.dataset.source
-   if (!clickedOnImg) {
+   if (event.target.nodeName !== 'IMG') {
      return;
    };
    console.log(clickedOnImg);
