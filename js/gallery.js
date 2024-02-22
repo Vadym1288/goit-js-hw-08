@@ -84,7 +84,7 @@ const handleKeyDown = (event, modal) => {
    }
  };
  
- gallery.addEventListener('click', (event) => {
+gallery.addEventListener('click', (event) => {
    event.preventDefault();
  
 const clickedOnImg = event.target.dataset.source
@@ -95,13 +95,13 @@ const clickedOnImg = event.target.dataset.source
  
 const myModal = basicLightbox.create(`<img width="1400" height="900" 
    src="${clickedOnImg}">`,
-     {
-     onShow: () => {
-       document.addEventListener("keydown", (event) => handleKeyDown(event, myModal));
-     },
-     onClose: () => {
-       document.removeEventListener("keydown", (event) => handleKeyDown(event, myModal));
-     }
-     })
+   {
+    onShow: () => {
+      document.addEventListener("keydown", handleKeyDown);
+    },
+    onClose: () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    }
+  })
      myModal.show();
  });
