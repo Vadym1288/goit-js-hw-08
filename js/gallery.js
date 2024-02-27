@@ -76,15 +76,10 @@ const markup = images.map(({ preview, original, description }) =>
   </li>`).join('');
  
 const gallery = document.querySelector('.gallery');
- gallery.innerHTML = markup;
+gallery.innerHTML = markup;
  
-const handleKeyDown = (event, modal) => {
-   if (event.key === "Escape") {
-     modal.close();
-   }
- };
- 
-gallery.addEventListener('click', (event) => {
+gallery.addEventListener('click', onImageClick);
+function onImageClick(event) {
    event.preventDefault();
  
 const clickedOnImg = event.target.dataset.source
@@ -103,5 +98,11 @@ const myModal = basicLightbox.create(`<img width="1400" height="900"
       document.removeEventListener("keydown", handleKeyDown);
     }
   })
-     myModal.show();
- });
+myModal.show();
+function handleKeyDown(event) {
+  if (event.key === "Escape") {
+      myModal.close();
+    }
+  };
+ }
+ 
